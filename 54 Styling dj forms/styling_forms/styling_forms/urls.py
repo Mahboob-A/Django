@@ -1,8 +1,8 @@
 
 
 '''
-140923, Thursday, 08.00 pm 
-49 : FormFields in Django 
+031023, Tuesday, 08.30 am 
+54 : Form Field Errors in Django 
 '''
 
 from django.contrib import admin
