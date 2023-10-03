@@ -1,0 +1,36 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Student Info</title>
+
+        <style>
+                th{
+                        border : 1px black solid 
+                }
+        </style>
+
+</head>
+<body>
+        
+        <h1>Student Info</h1>
+        {% comment %} if we use get(pk=) method then only one object is passed  {% endcomment %}
+        {% if st_info|length == 0 %}
+        <h2>Here is the data for {{st_info.stname}}</h2>
+        {% include 'course/show_data_single.html' %}
+
+        {% comment %} if all() method is passed, then callable queryset is passed, so loop it {% endcomment %}
+        {% elif st_info|length > 1 %}
+        <h2>Below Data Are Available</h2>
+        {% include 'course/show_data_loop.html' %}
+
+        {% else %}
+                <h3>No Data Available</h3>
+
+        {% endif %}
+
+</body>
+</html>

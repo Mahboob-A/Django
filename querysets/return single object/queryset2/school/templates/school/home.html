@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Student Details</title>
+</head>
+
+<style>
+
+table, th, td, tr  {
+        border : 1px solid black 
+}
+
+</style>
+
+<body>
+        
+   
+        {% if student %}
+             <h2 style="width:%; margin:auto" >Student Information</h2>
+             <br>
+             <br>
+        <table>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Roll</th>
+                <th>Marks</th>
+                <th>Class</th>
+                <th>Passing Year</th>
+                <th>City</th>
+                <tr>
+                        <td> {{student.id}} </td>
+                        <td> {{student.name}} </td>
+                        <td> {{student.roll}} </td>
+                        <td> {{student.marks}} </td>
+                        <td> {{student.class_name}} </td>
+                        <td> {{student.pass_date}} </td>
+                        <td> {{student.city}} </td>
+                </tr>
+        </table>
+
+        {% else %}
+        <h2 style= "width:50%; margin:auto">No Students Information Available</h2>
+        {% endif %}
+
+
+</body>
+</html>

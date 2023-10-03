@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+</head>
+<body>
+
+        <br>
+        <br>
+        <hr>
+        <hr>
+        <br>
+        <br>
+        <a href="{% url 'show_teacher_data' %}">Home</a>
+        <br>
+        <br>
+        <hr>
+        <hr>
+        <br>
+        <br>
+
+{% if teacher %}
+<div style="text-align: center;">
+    <br>
+    <h1>Teacher {{ teacher.name }}'s Details</h1>
+    <table style="margin: 0 auto;">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Subject</th>
+        </tr>
+        <tr>
+            <td>{{ teacher.id }}</td>
+            <td>{{ teacher.name }}</td>
+            <td>{{ teacher.email }}</td>
+            <td>{{ teacher.subject }}</td>
+        </tr>
+    </table>
+</div>
+{% endif %}
+
+        <br>
+        <br>
+        <hr>
+        <hr>
+        <br>
+        <br>
+        {% if all_teacher_data %}
+                <h2>All Other Teachers </h2>
+                {% for teacher in all_teacher_data %}
+                        <a href="{% url 'teacherdetail' teacher.id %}">  {{ teacher.name}} </a>
+                        &emsp;
+        {% endfor %}
+
+        <br>
+        <br>
+        <br>
+        <hr>
+        <hr>
+        <br>
+        <br>
+
+{% else %}
+        <h3>No Teacher Data Available Now</h3>
+{% endif %}
+
+</body>
+</html>

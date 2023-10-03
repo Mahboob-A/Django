@@ -1,0 +1,44 @@
+<!-- 090723, Sunday, 06.30 am  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+</head>
+<body>
+{% if st_data %}
+<h2>Student Filtered By Course Name Django [Uses def get_queryset(self):  Method] </h2>
+        {% for data in object_list %}    <!-- here the default object_list can also be used alongside custom context name  -->
+        <br>
+                ID : {{data.id}}
+                Name : {{data.name}}
+                Roll : {{data.roll}}
+                Course : {{data.course}}
+        <br>
+        {% endfor %}
+{% endif %}
+
+{% if ordered_courses %}
+<hr>
+        <h2>Student Ordered By Course [Uses def get_context_data(self, *args, **kwargs): Method to create new contexts] </h2>
+        {% for data in ordered_courses %}    
+        <br>
+                ID : {{data.id}}
+                Name : {{data.name}}
+                Roll : {{data.roll}}
+                Course : {{data.course}}
+        <br>
+        {% endfor %}
+{% endif %}
+
+{% if greetings %}
+<hr>
+        <h2>Greetings   [Uses def get_context_data(self, *args, **kwargs): Method to create new contexts]</h2>
+        <p>{{greetings}}</p>
+{% else %}
+        <h2>No Student Data Avalialble Now </h2>
+{% endif %}
+
+</body>
+</html>

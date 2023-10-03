@@ -1,0 +1,35 @@
+
+
+<table>
+        <tr>
+                <th>Frist Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Initial Amount</th>
+        </tr>
+
+        <h2>Student Enroll Info</h2>
+        {% for stud_details in show_enroll_data_obj.visible %}
+                <tr>
+                        <td>{{stud_details.first_name}}</td>
+                        <td>{{stud_details.last_name}}</td>
+                        <td>{{stud_details.email}}</td>
+                        <td>{{stud_details.phone_no}}</td>
+                        <td>{{stud_details.initial_amount}}</td>
+                </tr>
+        {% endfor %}
+
+        <br>
+
+        {% for stud_details in show_enroll_data_obj %}
+                <tr>
+                        <th>{{stud_details.first_name}}</th>
+                        <th>{{stud_details.last_name}}</th>
+                        <th>{{stud_details.email}}</th>
+                        <th>{{stud_details.phone_no}}</th>
+                        <th>{{stud_details.initial_amount}}</th>
+                </tr>
+        {% endfor %}
+                
+</table>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+</head>
+<body>
+        
+<br>
+        <br>
+        <hr>
+        <hr>
+        <br>
+        <br>
+        <a href="{% url 'show_teacher_data' %}">Home</a>
+        <br>
+        <br>
+        <hr>
+        <hr>
+        <br>
+        <br>
+
+{% if subject_data %}
+
+        <h2>These Are The {{sub}}'s Available Teachers</h2>
+        {% for subject in subject_data %}
+                <a href="{% url 'teacherdetail' subject.id %}">  {{ subject.name}} </a>
+                &emsp;
+        {% endfor %}
+<br>
+<br>
+<hr>
+<hr>
+
+{% else %}
+        <h3>No Teacher Data Available Now</h3>
+        <br>
+        <br>
+        <hr>
+        <hr>
+{% endif %}
+
+
+</body>
+</html>

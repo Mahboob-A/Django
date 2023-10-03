@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <style>
+        
+        table, th, td, tr {
+                border: 1px solid black 
+        }
+
+        </style>
+
+</head>
+<body>
+
+        <h3>Student Information </h3>
+        
+        {% if students %}
+
+        <table>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Roll</th>
+        <th>Grade</th>
+        <th>City</th>
+        <th>Marks</th>
+        <th>Admission Date</th>
+        <th>Pass Date</th>
+        {% for student in students %}
+
+        <tr>
+                <td> {{student.id}} </td>
+                <td> {{student.name}} </td>
+                <td> {{student.roll}} </td>
+                <td> {{student.grade}} </td>
+                <td> {{student.city}} </td>
+                <td> {{student.marks}} </td>
+                <td> {{student.admission_date}} </td>
+                <td> {{student.pass_date}} </td>
+        </tr>
+
+        {% endfor %}
+        </table>
+        {% else %}
+                <h3>No Data Available !!</h3>
+        {% endif %}
+        
+</body>
+</html>

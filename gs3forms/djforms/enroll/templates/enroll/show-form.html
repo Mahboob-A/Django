@@ -1,0 +1,40 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Show Form</title>
+
+        
+
+</head>
+
+<body>
+
+        {{show_form_obj.as_p}}
+        <input type="button" value="Submit">
+
+        <br>
+
+        <form action="" method = "get">
+
+                {% for field in  stud_form_obj.visible_fields %}
+                        {{field.label_tag}}
+                        {{field}}
+
+                {% endfor %}
+                
+                <!-- this will render the hidden field but wont show in the template  -->
+                {% for h_field in  stud_form_obj.hidden_fields %}
+
+                        {{h_field}}
+
+                {% endfor %}
+                <input type="button" value="Submit">
+
+        </form>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Show Enrolled Students</title>
+
+        <style>
+                th, td{
+                        border : 2px purple solid 
+                }
+
+
+
+        </style>
+
+</head>
+<body>
+        
+        {% if  show_enroll_data_obj %}
+                {% include 'enroll/loop-enroll-data.html' %}
+        {% else %}
+                <h2>No Data To Show</h2>
+        {% endif %}
+
+</body>
+</html>

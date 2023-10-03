@@ -1,0 +1,63 @@
+<!-- 100723, Monday, 06.30 am  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+</head>
+<body>
+
+        <br>
+<br>
+<hr>
+<hr>
+<div style="text-align: center;">
+    <h1>HOME</h1>
+</div>
+<br>
+<br>
+<hr>
+<hr>
+
+
+<br>
+<br>
+<hr>
+<hr>
+{% if all_teachers %}
+<h2>See Teacher Data</h2>
+        {% for data in all_teachers %}    <!-- here the default object_list can also be used alongside custom context name  -->
+                <a href="{% url 'teacherdetail' data.id %}">{{data.name}}</a>
+                &emsp;
+        {% endfor %}
+{% else %}
+<h2>No Teacher Available</h2>
+{% endif %}
+
+<br>
+<br>
+<hr>
+<hr>
+
+<br>
+<br>
+<hr>
+<hr>
+{% if subject_data %}
+<h2>See All Teachers Of Particular Subject</h2>
+        {% for data in subject_data %}    <!-- here the default object_list can also be used alongside custom context name  -->
+                <a href="{% url 'subject_teacher_list' data.subject %}">{{data.subject}}</a>
+                &emsp;
+        {% endfor %}
+{% else %}
+<h2>No Subjects Available</h2>
+{% endif %}
+<br>
+<br>
+<hr>
+<hr>
+
+
+</body>
+</html>

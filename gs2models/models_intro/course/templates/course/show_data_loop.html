@@ -1,0 +1,22 @@
+
+<table>
+        <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Class</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Address</th>
+        </tr>
+        {% for st_data in st_info %}
+        <tr>
+                <th>{{st_data.stid}}</th>
+                <th>{{st_data.stname}}</th>
+                <th>{{st_data.stclass}}</th>
+                <th>{{st_data.stemail}}</th>
+                <th>{{st_data.stpas}}</th>
+                <th>{{st_data.staddress}}</th>
+        </tr>
+        {% endfor %}
+
+</table>
