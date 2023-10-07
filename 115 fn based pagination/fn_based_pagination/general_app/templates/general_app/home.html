@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Blog Posts</title>
+</head>
+<body>
+
+        <div>
+
+                <h1>Recent Blog Posts</h1>
+                {% if blog_posts %}
+
+                        {% for blog_post in blog_posts %}
+
+                                <div>
+                                        <h3>{{blog_post.name}}</h3>
+                                        <h5> Published on - {{blog_post.pub_date}} </h5>
+                                        <h5> Last Edited - {{blog_post.last_edited}} </h5>
+                                        <p>{{blog_post.content}}</p>
+
+                                </div>
+
+                        {% endfor %}
+
+                {% endif %}
+
+        </div>
+
+        <div>
+
+                {% if blog_posts.has_previous %}
+                        <a href="?page={{blog_posts.previous_page_number}}">Previous</a>
+                {% endif %}
+                <span>{{blog_posts.number}} </span>
+
+                {% if blog_posts.has_next %}
+                        <a href="?page={{blog_posts.next_page_number}}">Next</a>
+                {% endif %}
+        
+
+        </div>
+
+</body>
+</html>

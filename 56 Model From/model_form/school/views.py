@@ -4,6 +4,8 @@ from django.shortcuts import render
 from .forms import StudentRegistrationForm 
 from .models import Student
 
+from django.contrib import messages
+
 def register_students(request): 
         if request.method == 'POST': 
                 form = StudentRegistrationForm(request.POST)
@@ -27,7 +29,11 @@ def register_students(request):
                         email = form.cleaned_data['email']
                         agree = form.cleaned_data['agree']
                         st = Student(name=name, roll=roll, email=email, agree=agree)
+                        messages.info(request, 'this is info')  
+                        messages.my_info(request, 'okok')
+                        print(messages.get_level(request))
                         st.save()
         else: 
                 form = StudentRegistrationForm()
+                
         return render(request, 'school/register.html', {'form' : form})

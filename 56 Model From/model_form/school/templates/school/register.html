@@ -54,6 +54,15 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 
+        <h1>messages</h1>
+        {% if messages %}
+
+        {% for message in messages  %}
+                <h1 {% if message.tags %} class="{{message.tags}}" {% endif %}> {{message}}</h1>
+                        
+        {% endfor %}
+
+        {% endif %}
 
 </body>
 </html>
