@@ -129,7 +129,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CACHE_MIDDLEWARE_SECONDS = 20 # the time when the cache is expired, a new server side response is generated 
 
-# 01: This is database caching for per site cache 
+# 01: This is database caching for per site cache (middleware will be as it is for per-site cache)
 # CACHES = {
 #     'default' : {
 #         'BACKEND' : 'django.core.cache.backends.db.DatabaseCache',
@@ -142,10 +142,18 @@ CACHE_MIDDLEWARE_SECONDS = 20 # the time when the cache is expired, a new server
 # }
 
 
-# 02: This is file based cache 
+# 02: This is file based cache (middleware will be as it is for per-site cache)
+# CACHES = {
+#     'default' : {
+#         'BACKEND' : 'django.core.cache.backends.filebased.FileBasedCache', 
+#         'LOCATION' : BASE_DIR / 'my_cache'
+#     }
+# }
+
+#  03: This is local memory cache (middleware will be as it is for per-site cache)
 CACHES = {
     'default' : {
-        'BACKEND' : 'django.core.cache.backends.filebased.FileBasedCache', 
-        'LOCATION' : BASE_DIR / 'my_cache'
+        'BACKEND' : 'django.core.cache.backends.locmem.LocMemCache', 
+        'LOCATION' : 'unique-snowflake', 
     }
 }
