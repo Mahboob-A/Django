@@ -129,6 +129,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CACHE_MIDDLEWARE_SECONDS = 20 # the time when the cache is expired, a new server side response is generated 
 
+# This is database caching for per site cache 
 CACHES = {
     'default' : {
         'BACKEND' : 'django.core.cache.backends.db.DatabaseCache',
