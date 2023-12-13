@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load cache %}
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cache Testing</title>
+</head>
+<body>
+        
+
+        <h1>Hello 01</h1>
+        <h1>Hello 02</h1>
+        <h1>Hello 03</h1>
+        <br>
+        <br>
+        {% cache 30 testing_cache  %}
+        <h1>ok ok</h1>
+        <h1>ok</h1>
+        <h1>ok 2</h1>
+        <h1>ok 3</h1>
+        <h1>ok 4</h1>
+
+         
+        {% endcache testing_cache %}
+
+</body>
+</html>
