@@ -11,12 +11,20 @@ from django.core.signals import request_started, request_finished, got_request_e
 # management work / django admin / model migration related signals 
 from django.db.models.signals import pre_migrate, post_migrate 
 
-from django.contrib.auth.models import User
+# database connection related signals 
+from django.db.backends.signals import connection_created 
 
 # receiver decorator 
 from django.dispatch import receiver
 
+# user model 
+from django.contrib.auth.models import User
+
+
 # we can take all the params in kwargs 
+
+
+'''  Auth Related Signals  '''
 
 @receiver(user_logged_in, sender=User)
 def user_login_receiver(sender, request, user, **kwargs): 
@@ -60,7 +68,7 @@ def user_login_failed_receiver(sender, credentials, request, **kwargs):
 # user_login_failed.connect(user_login_failed_receiver)
 
 
-''' Model Signals '''
+''' Model Related Signals '''
 
 ''' 
 pre save and post save 
@@ -168,6 +176,11 @@ def post_init_receiver(sender, *args, **kwargs):
 # post_init.connect(post_init_receiver, sender=User)
 
 
+
+'''  HTTP Request/Response Related Signals  '''
+
+
+
 '''
 request_started, request_finished, got_request_exception
 
@@ -214,7 +227,7 @@ def got_request_exception_receiver(sender, request, **kwargs):
 # got_request_exception.connect(got_request_exception)
 
 
-
+'''  Model Migration Related Signals  '''
 
 '''
 pre and post migrate 
@@ -248,6 +261,28 @@ def post_migrate_receiver(sender, **kwargs):
         print()
 
 # post_migrate.connect(post_migrate_receiver)
+
+
+'''  Database Connection Realted Signals  '''
+
+
+'''
+connection_created
+
+connection_created : this signal is sent when the database wrapper makes the initial connection to the database. 
+'''
+
+@receiver(connection_created)
+def connection_created_receiver(sender, conncetion, **kwargs): 
+        print()
+        print('############### Database Connection Created Receiver ###############')
+        print('sender: ', sender)
+        print('conncetion: ', conncetion)
+        print(f'kwargs: {kwargs}')        
+        print()
+
+# connection_created.connect(connection_created_receiver)
+
 
 
 
