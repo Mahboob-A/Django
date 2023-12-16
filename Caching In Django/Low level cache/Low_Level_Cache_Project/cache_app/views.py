@@ -43,3 +43,4 @@ def home(request):
 
 def home2(request): 
         return render(request, 'cache_app/home2.html')
+
