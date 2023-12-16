@@ -1,9 +1,17 @@
 
 # built in auth signals
 from django.contrib.auth.signals import user_logged_in, user_logged_out, user_login_failed
+
+# built in db signals 
 from django.db.models.signals import pre_init, pre_save, pre_delete,  pre_migrate,  post_init, post_save, post_delete, post_migrate
+
+# built in request response signals 
+from django.core.signals import request_started, request_finished, got_request_exception
+
 from django.contrib.auth.models import User
-from django.dispatch import receiver 
+
+# receiver decorator 
+from django.dispatch import receiver
 
 # we can take all the params in kwargs 
 
@@ -152,6 +160,51 @@ def post_init_receiver(sender, *args, **kwargs):
         print(f'kwargs: {kwargs}')
 
 # post_init.connect(post_init_receiver, sender=User)
+
+
+'''request_started, request_finished, got_request_exception
+
+request_started : when a http request beings to process 
+
+request_finished : when a http request has been successfully processed 
+
+got_request_exception : when an exception is occured processing a http request   
+
+'''
+
+@receiver(request_started)
+def request_started_receiver(sender, environ, **kwargs): # environ 
+        print()
+        print('############### HTTP Request Started Receiver ###############')
+        print('sender: ', sender)
+        print('environ: ', environ)
+        print(f'kwargs: {kwargs}')
+
+# request_started.connect(request_started_receiver)
+
+@receiver(request_finished)
+def request_finished_receiver(sender, **kwargs): 
+        print()
+        print('############### HTTP Request Finished Receiver ###############')
+        print('sender: ', sender)
+        print(f'kwargs: {kwargs}')
+
+
+# request_finished.connect(request_finished)
+
+
+@receiver(got_request_exception)
+def got_request_exception_receiver(sender, request, **kwargs): 
+        print()
+        print('############### HTTP Request Got Exception Receiver ###############')
+        print('sender: ', sender)
+        print('request: ', request)
+        print(f'kwargs: {kwargs}')
+
+# got_request_exception.connect(got_request_exception)
+
+
+
 
 
 
