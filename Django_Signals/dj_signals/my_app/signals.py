@@ -55,7 +55,6 @@ def user_login_failed_receiver(sender, credentials, request, **kwargs):
 pre save and post save 
 pre_save is sent  before model save() method 
 and post_save is sent just after model save() mehtod 
-
 '''
 @receiver(pre_save, sender=User)
 def pre_save_receiver(sender, instance, **kwargs): 
@@ -87,7 +86,6 @@ def post_save_receiver(sender, instance, created, **kwargs):
 pre and post delete 
 pre_delete is sent just before model's delete() method 
 and post_delete is sent just after model's delete() method
-
 '''
 
 
@@ -124,13 +122,36 @@ def post_delete_receiver(sender, instance, **kwargs):
 # post_delete.connect(post_delete_receiver, sender=User)
 
 
+'''
+pre and post init 
+init signals are sent when we instantiate a django model 
+
+pre_init is sent just before the __init__() is called when we instantiate a django model 
+post_init is sent just after the __init__() is finished, i.e. when the django model instance has been created
+'''
 
 
 
+@receiver(pre_init, sender=User)
+def pre_init_receiver(sender, *args, **kwargs): 
+        print()
+        print('############### Pre_INIT Receiver ###############')
+        print('sender: ', sender)
+        print(f'args: {args}')
+        print(f'kwargs: {kwargs}')
+
+# pre_init.connect(pre_init_receiver, sender=User)
 
 
+@receiver(post_init, sender=User)
+def post_init_receiver(sender, *args, **kwargs): 
+        print()
+        print('############### Post_INIT Receiver ###############')
+        print('sender: ', sender)
+        print(f'args: {args}')
+        print(f'kwargs: {kwargs}')
 
-
+# post_init.connect(post_init_receiver, sender=User)
 
 
 
