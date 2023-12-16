@@ -3,10 +3,13 @@
 from django.contrib.auth.signals import user_logged_in, user_logged_out, user_login_failed
 
 # built in db signals 
-from django.db.models.signals import pre_init, pre_save, pre_delete,  pre_migrate,  post_init, post_save, post_delete, post_migrate
+from django.db.models.signals import pre_init, pre_save, pre_delete,  post_init, post_save, post_delete
 
 # built in request response signals 
 from django.core.signals import request_started, request_finished, got_request_exception
+
+# management work / django admin / model migration related signals 
+from django.db.models.signals import pre_migrate, post_migrate 
 
 from django.contrib.auth.models import User
 
@@ -147,6 +150,8 @@ def pre_init_receiver(sender, *args, **kwargs):
         print('sender: ', sender)
         print(f'args: {args}')
         print(f'kwargs: {kwargs}')
+        print()
+        
 
 # pre_init.connect(pre_init_receiver, sender=User)
 
@@ -158,11 +163,13 @@ def post_init_receiver(sender, *args, **kwargs):
         print('sender: ', sender)
         print(f'args: {args}')
         print(f'kwargs: {kwargs}')
-
+        print()
+        
 # post_init.connect(post_init_receiver, sender=User)
 
 
-'''request_started, request_finished, got_request_exception
+'''
+request_started, request_finished, got_request_exception
 
 request_started : when a http request beings to process 
 
@@ -179,6 +186,7 @@ def request_started_receiver(sender, environ, **kwargs): # environ
         print('sender: ', sender)
         print('environ: ', environ)
         print(f'kwargs: {kwargs}')
+        print()
 
 # request_started.connect(request_started_receiver)
 
@@ -188,6 +196,7 @@ def request_finished_receiver(sender, **kwargs):
         print('############### HTTP Request Finished Receiver ###############')
         print('sender: ', sender)
         print(f'kwargs: {kwargs}')
+        print()
 
 
 # request_finished.connect(request_finished)
@@ -200,11 +209,45 @@ def got_request_exception_receiver(sender, request, **kwargs):
         print('sender: ', sender)
         print('request: ', request)
         print(f'kwargs: {kwargs}')
+        print()
 
 # got_request_exception.connect(got_request_exception)
 
 
 
+
+'''
+pre and post migrate 
+
+pre_migrate - this signal is sent just before the migration begins 
+
+post_migrate - this signal is sent just after the migration ends and flush command run.    
+
+NB : For each app, these signals will run 
+
+'''
+
+
+@receiver(pre_migrate)
+def pre_migrate_receiver(sender, **kwargs): 
+        print()
+        print('############### Pre_Migrate Receiver ###############')
+        print('sender: ', sender)
+        print(f'kwargs: {kwargs}')        
+        print()
+        
+# pre_migrate.connect(pre_migrate_receiver)
+
+
+@receiver(post_migrate)
+def post_migrate_receiver(sender, **kwargs): 
+        print()
+        print('############### Post_Migrate Receiver ###############')
+        print('sender: ', sender)
+        print(f'kwargs: {kwargs}')        
+        print()
+
+# post_migrate.connect(post_migrate_receiver)
 
 
 
