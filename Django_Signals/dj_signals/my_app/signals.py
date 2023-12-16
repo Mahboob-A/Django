@@ -1,6 +1,7 @@
 
 # built in auth signals
 from django.contrib.auth.signals import user_logged_in, user_logged_out, user_login_failed
+from django.db.models.signals import pre_init, pre_save, pre_delete,  pre_migrate,  post_init, post_save, post_delete, post_migrate
 from django.contrib.auth.models import User
 from django.dispatch import receiver 
 
@@ -38,3 +39,32 @@ def user_login_failed_receiver(sender, credentials, request, **kwargs):
         
 # manual connect 
 # user_login_failed.connect(user_login_failed_receiver)
+
+
+''' Model Signals '''
+
+@receiver(pre_save, sender=User)
+def pre_save_receiver(sender, instance, **kwargs): # we can also take all the params in kwargs for db signals 
+        print('############### Pre_Save Receiver ###############')
+        print('sender: ', sender)
+        print('instance: ', instance)
+        print(f'kwargs: , {kwargs}')
+
+# pre_save.connect(pre_save_receiver, sender=User)
+
+@receiver(post_save, sender=User)
+def post_save_receiver(sender, instance, created, **kwargs): # we can also take all the params in kwargs for db signals 
+        print('############### Post_Save Receiver ###############')
+        print('sender: ', sender)
+        print('instance: ', instance)
+        print('created: ', created)
+        print(f'kwargs: , {kwargs}')
+
+# post_save.connect(post_save_receiver, sender=User)
+
+
+
+
+
+
+
