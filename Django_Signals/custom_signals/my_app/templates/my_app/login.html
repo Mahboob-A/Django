@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+</head>
+<body>
+      
+        <h2>User Login</h2>
+        <form method="post">
+                {% csrf_token %}
+
+                {% if form.non_field_errors %}
+                        {% for error in form.non_field_errors  %}
+                                {{error}}
+                        {% endfor %}
+                {% endif %}
+
+                {% for form in login_form %}
+                        {{form.tags}} {{form}} {{form.errors|striptags}} <br><br>
+                {% endfor %}
+                <button type="submit" class="btn btn-primary">Submit</button> 
+        </form>
+        <br><b></b><br>
+
+
+</body>
+</html>
