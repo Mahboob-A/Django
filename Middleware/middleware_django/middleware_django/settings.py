@@ -51,8 +51,17 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
     # custom example function based middleware 
-    'my_app.middlewares.example_middleware', 
-    'my_app.middlewares.ExampleMiddleware', 
+    # 'my_app.middlewares.example_middleware', 
+    
+    # middleware with process view hook. 
+    'my_app.middlewares.ExampleProcessViewMiddleware', 
+    
+    # middleware with process exception hook. 
+    'my_app.middlewares.ExampleProcessExceptionMiddleware', 
+    
+    # middleware with process templte response hook. 
+    'my_app.middlewares.ExampleProcessTemplateResponseMiddleware', 
+    
 ]
 
 ROOT_URLCONF = 'middleware_django.urls'
