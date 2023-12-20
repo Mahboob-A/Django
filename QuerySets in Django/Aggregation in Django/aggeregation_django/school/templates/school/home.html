@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <style>
+        
+        table, th, td, tr {
+                border: 1px solid black 
+        }
+
+        </style>
+
+</head>
+<body>
+
+        <h3>Student Information </h3>
+        
+        {% if students %}
+
+        <table>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Roll</th>
+        <th>Grade</th>
+        <th>City</th>
+        <th>Marks</th>
+        <th>Admission Date</th>
+        <th>Pass Date</th>
+        {% for student in students %}
+
+        <tr>
+                <td> {{student.id}} </td>
+                <td> {{student.name}} </td>
+                <td> {{student.roll}} </td>
+                <td> {{student.grade}} </td>
+                <td> {{student.city}} </td>
+                <td> {{student.marks}} </td>
+                <td> {{student.admission_date}} </td>
+                <td> {{student.pass_date}} </td>
+        </tr>
+
+        {% endfor %}
+        </table>
+
+        <!-- dict key creates like this : res = queryset.aggregate(Max('field')) -->
+        <h2>For Aggregation Classes : </h2>
+        <h2>dict key creates like this : res = queryset.aggregate(Max('field'))</h2>
+        <h3>the key  :  {field_ _aggregation method name}</h3>
+        <h3>the above key : value is == { field _ _ max  : res } (double underscore) </h3>
+        <br>
+
+        <h2>Average Marks Dict : {{avg_marks}} </h2>
+        <h3>Average Marks Value : {{avg_marks.marks__avg}} </h3>
+        <br>
+
+        <h2>Total Marks Dict : {{total_marks_sum}} </h2>
+        <h3>Total Marks Value : {{total_marks_sum.marks__sum}} </h3>
+        <br>
+
+        <h2>Minimum Marks Dict : {{min_marks}} </h2>
+        <h3>Minimum Marks Value : {{min_marks.marks__min}} </h3>
+        <br>
+
+        <h2>Maximum Marks Dict : {{max_marks}} </h2>
+        <h3>Maximum Marks Value : {{max_marks.marks__max}} </h3>
+        <br>
+
+        <h2>Count Marks Dict : {{total_marks_count}} </h2>
+        <h3>Count Marks Value : {{total_marks_count.marks__count}} </h3>
+
+        {% else %}
+                <h3>No Data Available !!</h3>
+        {% endif %}
+
+        <br><br>
+
+
+        
+</body>
+</html>
